@@ -51,7 +51,7 @@ const Login: React.FC<LoginProps> = () => {
                   htmlFor="password"
                   className="block text-sm font-semibold text-gray-800"
                 >
-                  Password
+                  Contraseña
                 </label>
                 <input
                   type="password" value={password} onChange={(e) => setPassword(e.target.value)}
@@ -71,7 +71,7 @@ const Login: React.FC<LoginProps> = () => {
                 href="/register"
                 className="font-medium text-blue-600 hover:underline"
               >
-                Registrate
+                Regístrate
               </Link>
             </p>
           </div>

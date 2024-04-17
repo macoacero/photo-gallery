@@ -1,6 +1,7 @@
 import React, {useState } from 'react';
 import Image from 'next/image';
-import { Modal, Button } from 'react-bootstrap'; 
+import ModalPhotos from './modal';
+
 
 interface Photo {
   id: string;
@@ -17,10 +18,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ photos, onDelete }) => {
   const [show, setShow] = useState(false); 
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null); 
 
-  const handleClose = () => setShow(false);
+  // const handleClose = () => setShow(false);
   const handleOpenModal = (photo: Photo) => {
     setSelectedPhoto(photo);
     setShow(true);
+
+    console.log(show, photo)
   };
 
   return (
@@ -60,25 +63,16 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ photos, onDelete }) => {
         </div>
       ))}
 
-      {/* Modal for displaying selected photo */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{selectedPhoto?.title || 'Imagen'}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Image
-            src={selectedPhoto?.url || ''}
-            alt={selectedPhoto?.title || 'Imagen'}
-            width={600}
-            height={400}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+    {show && (
+      <ModalPhotos onClick={() => setShow(false)} title={selectedPhoto?.title}>
+        <Image
+          src={selectedPhoto?.url || ''}
+          alt={selectedPhoto?.title || 'Imagen'}
+          width={600}
+          height={400}
+        />
+      </ModalPhotos>
+    )}
     </div>
   );
 };

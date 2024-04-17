@@ -52,7 +52,7 @@ const Register: React.FC<RegisterProps> = () => {
                   htmlFor="password"
                   className="block text-sm font-semibold text-gray-800"
                 >
-                  Password
+                  Contraseña
                 </label>
                 <input
                   type="password" value={password} onChange={(e) => setPassword(e.target.value)}
@@ -69,7 +69,7 @@ const Register: React.FC<RegisterProps> = () => {
             <p className="mt-4 text-sm text-center text-gray-700">
              ¿Ya tienes cuenta?{" "}
               <Link
-                href="/register"
+                href="/login"
                 className="font-medium text-blue-600 hover:underline"
               >
                 Login
